@@ -1,10 +1,10 @@
 package edu.utfpr.cp.dacom.sa.soilcorrection;
 
-public class CorrecaoCalcioMagnesio 
+public class CorrecaoCalcioMagnesio
         implements ICorrecaoNutriente<FonteCalcioMagnesio> {
 
     public double calculaQuantidadeAplicar(
-        double qtdeFonteAdicionar, 
+        double qtdeFonteAdicionar,
         double prntPercent) {
 
         if (qtdeFonteAdicionar <= 0) {
