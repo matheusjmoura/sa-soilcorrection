@@ -8,7 +8,7 @@ public class NutrienteAdicional {
     private double correcaoAdicional;
 
     public NutrienteAdicional(
-        final NomeNutrienteAdicional nome, 
+        final NomeNutrienteAdicional nome,
         double teorNutriente) {
 
         this.nome = nome;
@@ -26,5 +26,5 @@ public class NutrienteAdicional {
     public double getCorrecaoAdicional() {
         return this.correcaoAdicional;
     }
-    
+
 }

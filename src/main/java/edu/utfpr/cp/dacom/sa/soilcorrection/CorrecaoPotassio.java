@@ -5,27 +5,27 @@ public class CorrecaoPotassio
             ICorrecaoNutriente<FontePotassio>,
             ICorrecaoNutrienteQuantidadeAplicar<FontePotassio> {
 
-    public double calculaNecessidadeAdicionarCMolcDm3 (
+    public double calculaNecessidadeAdicionarCMolcDm3(
         double teorSolo,
         double participacaoCTCExistente,
         double participacaoCTCDesejada) {
 
-            if (teorSolo <= 0) {
-                throw new IllegalArgumentException();
-            }
+        if (teorSolo <= 0) {
+            throw new IllegalArgumentException();
+        }
 
-            if (participacaoCTCExistente <= 0) {
-                throw new IllegalArgumentException();
-            }
+        if (participacaoCTCExistente <= 0) {
+            throw new IllegalArgumentException();
+        }
 
-            if (participacaoCTCDesejada <= 0) {
-                throw new IllegalArgumentException();
-            }
+        if (participacaoCTCDesejada <= 0) {
+            throw new IllegalArgumentException();
+        }
 
-            return (teorSolo 
-                    * participacaoCTCDesejada 
-                    / participacaoCTCExistente) 
-                    - teorSolo;
+        return (teorSolo
+            * participacaoCTCDesejada
+            / participacaoCTCExistente)
+            - teorSolo;
     }
 
 }
