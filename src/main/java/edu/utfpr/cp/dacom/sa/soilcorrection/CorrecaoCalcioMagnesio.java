@@ -1,31 +1,51 @@
 package edu.utfpr.cp.dacom.sa.soilcorrection;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import static edu.utfpr.cp.dacom.sa.soilcorrection.TexturaSolo.ARGILOSO;
 import static edu.utfpr.cp.dacom.sa.soilcorrection.TexturaSolo.TEXTURA_MEDIA;
 
 public class CorrecaoCalcioMagnesio implements ICorrecaoNutriente<FonteCalcioMagnesio> {
 
-    public String idealCTCCalcio(TexturaSolo solo) {
-        String concentracaoIdealCalcio = "";
-
+    public List<Double> idealCTCCalcio(TexturaSolo solo) {
         if (solo.equals(ARGILOSO)) {
-            concentracaoIdealCalcio = "45 a 55";
+            return Arrays.asList(45.0, 55.0);
         } else if (solo.equals(TEXTURA_MEDIA)) {
-            concentracaoIdealCalcio = "35 a 40";
+            return Arrays.asList(35.0, 40.0);
         }
 
-        return concentracaoIdealCalcio;
+        return Collections.emptyList();
     }
 
-    public String idealCTCMagnesio(TexturaSolo solo) {
-        String concentracaoIdealMagnesio = "";
-
+    public List<Double> idealCTCMagnesio(TexturaSolo solo) {
         if (solo.equals(ARGILOSO)) {
-            concentracaoIdealMagnesio = "10 a 15";
+            return Arrays.asList(10.0, 15.0);
         } else if (solo.equals(TEXTURA_MEDIA)) {
-            concentracaoIdealMagnesio = "8 a 12";
+            return Arrays.asList(8.0, 12.0);
         }
 
-        return concentracaoIdealMagnesio;
+        return Collections.emptyList();
+    }
+
+    public double calculaCalcioAdicionado(double teor){
+        return 0.01783 * teor;
+    }
+
+    public double calculaQuantidadeAplicar(double teorCalcio, double prnt) {
+        if (teorCalcio <= 0) {
+            throw new IllegalArgumentException();
+        }
+        return teorCalcio / prnt;
+    }
+
+    public double calculaTeorCalcio(double teorSolo, double participacaoCTCExistente, double participacaoCTCDesejada,
+                                    double teorCalcioFosfagem) {
+        if (teorSolo <= 0 || participacaoCTCExistente <= 0 || participacaoCTCDesejada <= 0) {
+            throw new IllegalArgumentException();
+        }
+
+        return (teorSolo * participacaoCTCDesejada / participacaoCTCExistente) - teorSolo - teorCalcioFosfagem;
     }
 }
