@@ -1,7 +1,12 @@
 package edu.utfpr.cp.dacom.sa.soilcorrection;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 import java.util.Set;
 
+@Getter
+@RequiredArgsConstructor
 public enum FonteFosforo implements IFonteNutriente {
     SUPERFOSFATO_SIMPLES(0.18, Set.of(new NutrienteAdicional(NomeNutrienteAdicional.ENXOFRE, 0.1), new NutrienteAdicional(NomeNutrienteAdicional.CALCIO, 0.28))),
     SUPERFOSFATO_TRIPO(0.41, Set.of(new NutrienteAdicional(NomeNutrienteAdicional.CALCIO, 0.2))),
@@ -9,22 +14,4 @@ public enum FonteFosforo implements IFonteNutriente {
 
     private final double teorFonte;
     private final Set<NutrienteAdicional> nutrientesAdicionais;
-
-    FonteFosforo(
-        double teorFonte,
-        final Set<NutrienteAdicional> nutrientesAdicionais) {
-
-        this.teorFonte = teorFonte;
-        this.nutrientesAdicionais = nutrientesAdicionais;
-    }
-
-    @Override
-    public double getTeorFonte() {
-        return this.teorFonte;
-    }
-
-    @Override
-    public Set<NutrienteAdicional> getNutrientesAdicionais() {
-        return this.nutrientesAdicionais;
-    }
 }
