@@ -1,8 +1,8 @@
-package edu.utfpr.cp.dacom.sa.soilcorrection;
+package edu.utfpr.cp.dacom.sa.soilcorrection.conversao;
 
 import lombok.NonNull;
 
-public class ConverteCMolcDm3EmMgDm3 implements Conversao<Double, Double> {
+public class ConverteKgHaEmK2O implements Conversao<Double, Double> {
 
     @Override
     public Double converte(@NonNull Double valor) {
@@ -11,7 +11,7 @@ public class ConverteCMolcDm3EmMgDm3 implements Conversao<Double, Double> {
             throw new IllegalArgumentException();
         }
 
-        return valor * 391;
+        return valor * 1.2;
     }
 
 }
